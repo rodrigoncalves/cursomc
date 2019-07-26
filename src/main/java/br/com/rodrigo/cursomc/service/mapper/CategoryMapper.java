@@ -15,7 +15,7 @@ public class CategoryMapper extends AbstractMapper<Category, CategoryDTO> {
 	public CategoryDTO entityToDTO(Category entity) {
 		return CategoryDTO.builder()
 			.id(entity.getId())
-			.description(entity.getDescription())
+			.description(entity.getName())
 			.products(productMapper.entitiesToDTOs(entity.getProducts()))
 			.build();
 	}
@@ -24,7 +24,7 @@ public class CategoryMapper extends AbstractMapper<Category, CategoryDTO> {
 	public Category dtoToEntity(CategoryDTO dto) {
 		return Category.builder()
 			.id(dto.getId())
-			.description(dto.getDescription())
+			.name(dto.getDescription())
 			.build();
 	}
 

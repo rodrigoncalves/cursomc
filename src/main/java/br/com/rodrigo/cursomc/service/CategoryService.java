@@ -41,7 +41,7 @@ public class CategoryService {
 		Category category = categoryRepository.findById(id)
 			.orElseThrow(() -> new ResourceNotFoundException("Category not found: " + id));
 
-		category.setDescription(categoryDTO.getDescription());
+		category.setName(categoryDTO.getDescription());
 		categoryRepository.save(category);
 
 		return categoryMapper.entityToDTO(category);

@@ -1,28 +1,26 @@
 package br.com.rodrigo.cursomc.domain;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Builder
 @Entity
-public class Category {
-
-	private static final long serialVersionUID = 2214911413769255530L;
+public class State  {
+	private static final long serialVersionUID = 3470224101179215720L;
 
 	@Id
 	@GeneratedValue
 	private Integer id;
 	private String name;
 
-	@ManyToMany(mappedBy = "categories")
-	private final List<Product> products = new ArrayList<>();
-}
+	@OneToMany(mappedBy = "state")
+	private final List<City> cities = new ArrayList<>();
 
+}
