@@ -3,12 +3,10 @@ package br.com.rodrigo.cursomc.service.dto;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 @Builder
-public class CategoryDTO {
+public class ProductDTO {
 	private Integer id;
-	private String description;
-	private List<ProductDTO> products;
+	private String name;
+	private Double price;
 }

@@ -5,10 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +22,9 @@ public class Category implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-
 	private String description;
+
+	@ManyToMany(mappedBy = "categories")
+	private final List<Product> products = new ArrayList<>();
+
 }
