@@ -7,31 +7,32 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
 @Entity
 public class Order implements Serializable {
+	private static final long serialVersionUID = -5641773427782160604L;
 
 	@Id
 	@GeneratedValue
 	private Integer id;
 
-	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
-	private Date instante;
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+	private Date date;
 
-//	@OneToOne(cascade= CascadeType.ALL, mappedBy="pedido")
-//	private Pagamento pagamento;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
+	private Payment payment;
 
 	@ManyToOne
-	@JoinColumn(name="customer_id")
+	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
 	@ManyToOne
-	@JoinColumn(name="delivery_address_id")
+	@JoinColumn(name = "delivery_address_id")
 	private Address deliveryAddress;
 
-//	@OneToMany(mappedBy="id.pedido")
-//	private Set<ItemPedido> itens = new HashSet<>();
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderItem> items;
 }
